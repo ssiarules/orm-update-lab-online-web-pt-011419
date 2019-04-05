@@ -1,3 +1,4 @@
+require 'pry'
 require "spec_helper"
 
 describe "Student" do
@@ -61,6 +62,7 @@ describe "Student" do
       jane.save
       jane_id = jane.id
       jane.name = "Jane Smith"
+      #binding.pry 
       jane.save
       jane_from_db = DB[:conn].execute("SELECT * FROM students WHERE id = ?", jane_id)
       expect(jane_from_db[0][1]).to eq("Jane Smith")
